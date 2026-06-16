@@ -1,10 +1,471 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-	<title>Sitio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carper Chevrolet — Concesionario Autorizado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-	<h1>title</h1>
-	<p>explicacion.<p>
+
+  <!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
+  <div class="header-wrap">
+    <div class="header">
+      <a class="logo" href="#">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7.5 3.75L12 11.68 4.5 7.93 12 4.18zM4 9.43l7 3.5V19.07L4 15.57V9.43zm9 9.64V12.93l7-3.5v6.14L13 19.07z"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <strong>Carper Chevrolet</strong>
+          <span>Authorized Dealer</span>
+        </div>
+      </a>
+      <nav>
+        <a href="#">Nuevos</a>
+        <a href="#">Usados</a>
+        <a href="#">Servicio</a>
+        <a href="#">Financiamiento</a>
+        <a href="#">Nosotros</a>
+        <a href="#" class="nav-cta">Contactar</a>
+      </nav>
+      <!-- Hamburger (mobile) -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile nav -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="#">Nuevos</a>
+      <a href="#">Usados</a>
+      <a href="#">Servicio</a>
+      <a href="#">Financiamiento</a>
+      <a href="#">Nosotros</a>
+      <a href="#" class="nav-cta">Contactar</a>
+    </nav>
+  </div>
+
+  <!-- ═══════════════════════════════ HERO ════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Oferta del mes</p>
+      <h1 class="hero-title">Chevrolet <span>Equinox</span> 2025</h1>
+      <p class="hero-subtitle">Tecnología avanzada. Diseño audaz. Tuyo hoy.</p>
+      <div class="hero-price-row">
+        <span class="hero-price-label">Desde</span>
+        <span class="hero-price">$29,900</span>
+      </div>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="scrollTo('inventory')">Ver inventario</button>
+        <button class="btn-secondary" onclick="scrollTo('contact')">Cotizar ahora</button>
+      </div>
+    </div>
+    <div class="hero-dots" id="heroDots">
+      <button class="dot active" data-slide="0"></button>
+      <button class="dot" data-slide="1"></button>
+      <button class="dot" data-slide="2"></button>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ SEARCH BAR ═══════════════════════════════ -->
+  <div class="search-bar">
+    <div class="search-bar-inner">
+      <span class="search-label">Buscar vehículo</span>
+      <select id="filterYear">
+        <option value="">Año</option>
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+      </select>
+      <select id="filterModel">
+        <option value="">Modelo</option>
+        <option value="Equinox">Equinox</option>
+        <option value="Silverado">Silverado</option>
+        <option value="Blazer">Blazer</option>
+        <option value="Trax">Trax</option>
+        <option value="Colorado">Colorado</option>
+      </select>
+      <select id="filterType">
+        <option value="">Tipo</option>
+        <option value="SUV">SUV</option>
+        <option value="Pickup">Pickup</option>
+        <option value="Sedán">Sedán</option>
+        <option value="Eléctrico">Eléctrico</option>
+      </select>
+      <input type="number" id="filterPrice" placeholder="Precio máximo" />
+      <button class="btn-primary" onclick="filterVehicles()">Buscar →</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ INVENTORY ═══════════════════════════════ -->
+  <section class="section" id="inventory">
+    <div class="section-header">
+      <p class="section-eyebrow">Inventario destacado</p>
+      <h2 class="section-title">Vehículos disponibles</h2>
+      <p class="section-subtitle">Encuentra el auto perfecto para ti entre nuestras mejores opciones.</p>
+    </div>
+    <div class="vehicles-grid" id="vehiclesGrid">
+
+      <div class="vehicle-card" data-year="2025" data-model="Equinox" data-type="SUV" data-price="34500">
+        <div class="vehicle-img-wrap">
+          <div class="vehicle-img vehicle-img--blue">
+            <svg width="120" height="60" viewBox="0 0 120 60">
+              <path d="M10 40 Q30 20 60 18 Q90 16 110 40 L115 45 H5 Z" fill="#1D2F8E"/>
+              <rect x="15" y="38" width="90" height="10" rx="2" fill="#15256F"/>
+              <circle cx="30" cy="48" r="7" fill="#333"/>
+              <circle cx="90" cy="48" r="7" fill="#333"/>
+            </svg>
+          </div>
+          <span class="vehicle-badge">Nuevo 2025</span>
+        </div>
+        <div class="vehicle-body">
+          <p class="vehicle-name">Chevrolet Equinox</p>
+          <p class="vehicle-trim">LT AWD · Azul Glaciar</p>
+          <div class="vehicle-specs">
+            <div class="spec"><span>Motor</span><strong>1.5T</strong></div>
+            <div class="spec"><span>Trans.</span><strong>Auto 6</strong></div>
+            <div class="spec"><span>Km</span><strong>0 km</strong></div>
+          </div>
+          <div class="vehicle-price-row">
+            <span class="vehicle-price">$34,500</span>
+            <a href="#" class="vehicle-cta">Ver detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="vehicle-card" data-year="2025" data-model="Silverado" data-type="Pickup" data-price="52800">
+        <div class="vehicle-img-wrap">
+          <div class="vehicle-img vehicle-img--gray">
+            <svg width="140" height="60" viewBox="0 0 140 60">
+              <path d="M5 40 Q35 18 70 15 Q105 12 135 40 L140 46 H0 Z" fill="#666"/>
+              <rect x="8" y="36" width="124" height="12" rx="2" fill="#555"/>
+              <circle cx="30" cy="50" r="8" fill="#222"/>
+              <circle cx="110" cy="50" r="8" fill="#222"/>
+            </svg>
+          </div>
+          <span class="vehicle-badge">Nuevo 2025</span>
+        </div>
+        <div class="vehicle-body">
+          <p class="vehicle-name">Chevrolet Silverado</p>
+          <p class="vehicle-trim">LTZ Z71 · Blanco Glaciar</p>
+          <div class="vehicle-specs">
+            <div class="spec"><span>Motor</span><strong>5.3L V8</strong></div>
+            <div class="spec"><span>Trans.</span><strong>Auto 10</strong></div>
+            <div class="spec"><span>Km</span><strong>0 km</strong></div>
+          </div>
+          <div class="vehicle-price-row">
+            <span class="vehicle-price">$52,800</span>
+            <a href="#" class="vehicle-cta">Ver detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="vehicle-card" data-year="2025" data-model="Blazer" data-type="SUV" data-price="44200">
+        <div class="vehicle-img-wrap">
+          <div class="vehicle-img vehicle-img--green">
+            <svg width="120" height="60" viewBox="0 0 120 60">
+              <path d="M8 42 Q28 22 60 19 Q92 16 112 42 L118 47 H2 Z" fill="#1a5c1a"/>
+              <rect x="12" y="40" width="96" height="10" rx="2" fill="#145214"/>
+              <circle cx="28" cy="50" r="7" fill="#111"/>
+              <circle cx="92" cy="50" r="7" fill="#111"/>
+            </svg>
+          </div>
+          <span class="vehicle-badge vehicle-badge--gold">Oferta</span>
+        </div>
+        <div class="vehicle-body">
+          <p class="vehicle-name">Chevrolet Blazer</p>
+          <p class="vehicle-trim">RS · Verde Bosque</p>
+          <div class="vehicle-specs">
+            <div class="spec"><span>Motor</span><strong>2.0T</strong></div>
+            <div class="spec"><span>Trans.</span><strong>Auto 9</strong></div>
+            <div class="spec"><span>Km</span><strong>0 km</strong></div>
+          </div>
+          <div class="vehicle-price-row">
+            <span class="vehicle-price">$44,200</span>
+            <a href="#" class="vehicle-cta">Ver detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="vehicle-card" data-year="2024" data-model="Trax" data-type="SUV" data-price="26900">
+        <div class="vehicle-img-wrap">
+          <div class="vehicle-img vehicle-img--red">
+            <svg width="120" height="60" viewBox="0 0 120 60">
+              <path d="M12 42 Q32 24 60 21 Q88 18 108 42 L114 47 H6 Z" fill="#b91c1c"/>
+              <rect x="14" y="40" width="92" height="10" rx="2" fill="#991b1b"/>
+              <circle cx="30" cy="50" r="7" fill="#222"/>
+              <circle cx="90" cy="50" r="7" fill="#222"/>
+            </svg>
+          </div>
+          <span class="vehicle-badge vehicle-badge--gold">2024</span>
+        </div>
+        <div class="vehicle-body">
+          <p class="vehicle-name">Chevrolet Trax</p>
+          <p class="vehicle-trim">Premier · Rojo Ardiente</p>
+          <div class="vehicle-specs">
+            <div class="spec"><span>Motor</span><strong>1.3T</strong></div>
+            <div class="spec"><span>Trans.</span><strong>CVT</strong></div>
+            <div class="spec"><span>Km</span><strong>12,000</strong></div>
+          </div>
+          <div class="vehicle-price-row">
+            <span class="vehicle-price">$26,900</span>
+            <a href="#" class="vehicle-cta">Ver detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="vehicle-card" data-year="2025" data-model="Colorado" data-type="Pickup" data-price="38500">
+        <div class="vehicle-img-wrap">
+          <div class="vehicle-img vehicle-img--dark">
+            <svg width="140" height="60" viewBox="0 0 140 60">
+              <path d="M5 42 Q38 20 70 17 Q102 14 135 42 L140 47 H0 Z" fill="#1e293b"/>
+              <rect x="8" y="39" width="124" height="11" rx="2" fill="#0f172a"/>
+              <circle cx="30" cy="50" r="8" fill="#111"/>
+              <circle cx="110" cy="50" r="8" fill="#111"/>
+            </svg>
+          </div>
+          <span class="vehicle-badge">Nuevo 2025</span>
+        </div>
+        <div class="vehicle-body">
+          <p class="vehicle-name">Chevrolet Colorado</p>
+          <p class="vehicle-trim">ZR2 · Negro Medianoche</p>
+          <div class="vehicle-specs">
+            <div class="spec"><span>Motor</span><strong>2.7T</strong></div>
+            <div class="spec"><span>Trans.</span><strong>Auto 8</strong></div>
+            <div class="spec"><span>Km</span><strong>0 km</strong></div>
+          </div>
+          <div class="vehicle-price-row">
+            <span class="vehicle-price">$38,500</span>
+            <a href="#" class="vehicle-cta">Ver detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="vehicle-card" data-year="2025" data-model="Equinox" data-type="Eléctrico" data-price="41000">
+        <div class="vehicle-img-wrap">
+          <div class="vehicle-img vehicle-img--teal">
+            <svg width="120" height="60" viewBox="0 0 120 60">
+              <path d="M10 42 Q30 22 60 19 Q90 16 110 42 L115 47 H5 Z" fill="#0e7490"/>
+              <rect x="14" y="40" width="92" height="10" rx="2" fill="#0c6280"/>
+              <circle cx="28" cy="50" r="7" fill="#111"/>
+              <circle cx="92" cy="50" r="7" fill="#111"/>
+              <text x="54" y="32" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">EV</text>
+            </svg>
+          </div>
+          <span class="vehicle-badge" style="background:#0e7490;">Eléctrico</span>
+        </div>
+        <div class="vehicle-body">
+          <p class="vehicle-name">Equinox EV 2025</p>
+          <p class="vehicle-trim">RS · Azul Eléctrico</p>
+          <div class="vehicle-specs">
+            <div class="spec"><span>Motor</span><strong>210 kW</strong></div>
+            <div class="spec"><span>Autonomía</span><strong>480 km</strong></div>
+            <div class="spec"><span>Km</span><strong>0 km</strong></div>
+          </div>
+          <div class="vehicle-price-row">
+            <span class="vehicle-price">$41,000</span>
+            <a href="#" class="vehicle-cta">Ver detalles</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- No results message -->
+    <p class="no-results" id="noResults" style="display:none;">No se encontraron vehículos con esos filtros.</p>
+    <div style="text-align:center; margin-top:32px;">
+      <button class="btn-secondary" onclick="resetFilters()">Ver todo el inventario</button>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ═══════════════════════════ PROMO BANNER ═════════════════════════════ -->
+  <div class="promo-banner">
+    <div class="promo-inner">
+      <div class="promo-text">
+        <h2>Financiamiento <span class="promo-highlight">0% de interés</span> por 36 meses</h2>
+        <p>En modelos seleccionados 2025. Oferta válida hasta el 30 de junio.</p>
+      </div>
+      <button class="btn-secondary" onclick="scrollTo('contact')">Saber más →</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ SERVICES ════════════════════════════════ -->
+  <section class="section" id="services">
+    <div class="section-header">
+      <p class="section-eyebrow">Lo que ofrecemos</p>
+      <h2 class="section-title">Nuestros servicios</h2>
+      <p class="section-subtitle">Más de 20 años acompañando a cada cliente en cada etapa.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-1-9H7v2h4v4h2v-4h4v-2h-4V7h-2v4z"/></svg>
+        </div>
+        <p class="service-name">Venta de nuevos</p>
+        <p class="service-desc">El modelo que buscas, con el equipo que necesitas.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 19.82L5.71 21l1-2c.63.25 1.29.5 2 .68L9 22h2l.5-2.5c.74-.1 1.46-.27 2.16-.5L15 21h2l-1.5-2.93C17.36 16.4 19 14.39 19 12c0-1.66-.67-3.16-1.75-4.25L21 4l-4 4z"/></svg>
+        </div>
+        <p class="service-name">Usados certificados</p>
+        <p class="service-desc">Inspección de 172 puntos y garantía incluida.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+        </div>
+        <p class="service-name">Taller & mantenimiento</p>
+        <p class="service-desc">Técnicos certificados GM con repuestos originales.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        </div>
+        <p class="service-name">Financiamiento</p>
+        <p class="service-desc">Planes a tu medida con las mejores tasas del mercado.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+        </div>
+        <p class="service-name">Garantía extendida</p>
+        <p class="service-desc">Cobertura total hasta 100,000 km con atención nacional.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12zM7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
+        </div>
+        <p class="service-name">Atención al cliente</p>
+        <p class="service-desc">Asesoría personalizada antes, durante y después de tu compra.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ═══════════════════════════ CONTACT FORM ═════════════════════════════ -->
+  <section class="section" id="contact">
+    <div class="section-header">
+      <p class="section-eyebrow">Estamos para ayudarte</p>
+      <h2 class="section-title">Contáctanos</h2>
+      <p class="section-subtitle">Completa el formulario y un asesor te responderá en menos de 2 horas.</p>
+    </div>
+    <div class="contact-layout">
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Nombre completo</label>
+            <input type="text" id="name" placeholder="Juan García" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" placeholder="(555) 123-4567" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="juan@correo.com" required />
+        </div>
+        <div class="form-group">
+          <label for="interest">Vehículo de interés</label>
+          <select id="interest">
+            <option value="">Seleccionar modelo...</option>
+            <option>Equinox 2025</option>
+            <option>Silverado 2025</option>
+            <option>Blazer 2025</option>
+            <option>Trax 2024</option>
+            <option>Colorado 2025</option>
+            <option>Equinox EV 2025</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Mensaje</label>
+          <textarea id="message" rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-full">Enviar mensaje →</button>
+        <p class="form-success" id="formSuccess" style="display:none;">✅ ¡Mensaje enviado! Te contactaremos pronto.</p>
+      </form>
+
+      <div class="contact-info">
+        <div class="info-card">
+          <h3>Información de contacto</h3>
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <div>
+              <strong>Dirección</strong>
+              <p>Av. Principal 1200, Col. Centro</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📞</span>
+            <div>
+              <strong>Teléfono</strong>
+              <p>(555) 123-4567</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">✉</span>
+            <div>
+              <strong>Correo</strong>
+              <p>info@carperchevy.com</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">🕐</span>
+            <div>
+              <strong>Horario</strong>
+              <p>Lun–Vie: 9:00 – 19:00<br/>Sáb: 9:00 – 15:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ FOOTER ══════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <strong>Carper Chevrolet</strong>
+          <span>Authorized Dealer</span>
+          <p>Tu concesionario Chevrolet de confianza. Más de 20 años conectando personas con vehículos excepcionales.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Vehículos</h4>
+          <a href="#">Autos nuevos</a>
+          <a href="#">Usados certificados</a>
+          <a href="#">Eléctricos</a>
+          <a href="#">Trucks & SUVs</a>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <a href="#">Taller</a>
+          <a href="#">Financiamiento</a>
+          <a href="#">Seguros</a>
+          <a href="#">Accesorios</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="#">📍 Av. Principal 1200</a>
+          <a href="tel:5551234567">📞 (555) 123-4567</a>
+          <a href="mailto:info@carperchevy.com">✉ info@carperchevy.com</a>
+          <a href="#">Lun–Sáb 9:00–19:00</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Carper Chevrolet. Todos los derechos reservados.</p>
+        <p>Precios sujetos a cambio sin previo aviso. <span class="footer-accent">♥</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
